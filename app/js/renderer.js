@@ -4,6 +4,7 @@ const timer = require('./timer');
 let linkSobre = document.querySelector('#link-sobre');
 const botaoPlay = document.querySelector('.botao-play');
 const tempo = document.querySelector('.tempo');
+const curso = document.querySelector('.curso').innerText;
 
 linkSobre.addEventListener('click', function () {
   ipcRenderer.send('abrir-janela-sobre');
@@ -14,7 +15,7 @@ let play = false;
 botaoPlay.addEventListener('click', () => {
   imgs = imgs.reverse();
   if (play) {
-    timer.parar();
+    timer.parar(curso);
     play = false;
   } else {
     timer.iniciar(tempo);
