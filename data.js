@@ -1,5 +1,5 @@
 const jsonfile = require('jsonfile-promised');
-const { existsSync } = require('fs');
+const { existsSync, readdirSync } = require('fs');
 
 module.exports = {
   salvaDados(curso, tempoEstudado) {
@@ -37,5 +37,13 @@ module.exports = {
   pegaDados(curso) {
     const caminhoDoCurso = `${__dirname}/data/${curso}.json`;
     return jsonfile.readFile(caminhoDoCurso);
+  },
+  pegaNomeDosCursos() {
+    const arquivos = readdirSync(__dirname + '/data/');
+    const cursos = arquivos.map((arquivo) => {
+      return arquivo.substr(0, arquivo.lastIndexOf('.'));
+    });
+
+    return cursos;
   },
 };

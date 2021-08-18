@@ -31,28 +31,15 @@ body {
 }
 
 .relogio {
-  display: inline-block;
-  width: 75%;
-  text-align: center;
-  height: 75%;
-  vertical-align: top;
+  display: flex;
+  justify-content: space-around;
   background-color: #879cff;
 }
 
 .controles {
-  width: 25%;
-  height: 75%;
-  /*margin-bottom: 5px;*/
-  display: inline-block;
   background-color: #7d94ff;
 }
 
-.botao-play {
-  width: 65%;
-  padding-top: 13px;
-  margin: 0 auto;
-  display: block;
-}
 .tempo {
   font-size: 5.5em;
   color: #ffffff;
