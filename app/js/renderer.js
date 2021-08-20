@@ -5,10 +5,12 @@ const data = require('../../data');
 let linkSobre = document.querySelector('#link-sobre');
 const botaoPlay = document.querySelector('.botao-play');
 const tempo = document.querySelector('.tempo');
-const curso = document.querySelector('.curso').innerText;
+const curso = document.querySelector('.curso');
+const botaoAdicionar = document.querySelector('.botao-adicionar');
+const campoAdicionar = document.querySelector('.campo-adicionar');
 
 window.onload = () => {
-  data.pegaDados(curso).then((dados) => {
+  data.pegaDados(curso.textContent).then((dados) => {
     tempo.textContent = dados.tempo;
   });
 };
@@ -22,7 +24,7 @@ let play = false;
 botaoPlay.addEventListener('click', () => {
   imgs = imgs.reverse();
   if (play) {
-    timer.parar(curso);
+    timer.parar(curso.textContent);
     play = false;
   } else {
     timer.iniciar(tempo);
@@ -36,4 +38,12 @@ ipcRenderer.on('curso-trocado', (event, curso) => {
     tempo.textContent = dados.tempo;
   });
   document.querySelector('.curso').textContent = curso;
+});
+
+botaoAdicionar.addEventListener('click', () => {
+  let novoCurso = campoAdicionar.value;
+  curso.textContent = novoCurso;
+  tempo.textContent = '00:00:00';
+  campoAdicionar.value = '';
+  ipcRenderer.send('curso-adicionado', novoCurso);
 });
