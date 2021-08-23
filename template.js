@@ -72,6 +72,7 @@ module.exports = {
             click: () => {
               ipcMain.emit('abrir-janela-sobre');
             },
+            accelerator: 'CommandOrControl+I',
           },
         ],
       },
