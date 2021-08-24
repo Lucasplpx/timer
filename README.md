@@ -3,7 +3,7 @@
 * npm start
 
 # Build Project
-npm run build
+* npm run build
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
